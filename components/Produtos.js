@@ -1,5 +1,6 @@
 import { useQuery } from '@apollo/client';
-import { ALL_PRODUTOS_QUERY } from '../queries/produtos-queries';
+import { string } from 'prop-types';
+import { ALL_PRODUTOS_QUERY } from '../api/queries/produtos-queries';
 import Produto from './Produto';
 import { ProdutosStyles } from './styles/ProdutosStyles';
 
@@ -25,5 +26,9 @@ function Produtos({ moda }) {
     </ProdutosStyles>
   );
 }
+
+Produtos.propTypes = {
+  moda: string,
+};
 
 export default Produtos;

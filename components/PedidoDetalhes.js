@@ -1,9 +1,9 @@
 import { useQuery } from '@apollo/client';
 import { string } from 'prop-types';
 import styled from 'styled-components';
+import { PEDIDO_DETALHES_QUERY } from '../api/queries/pedidos-queries';
 import { formatarData } from '../lib/formatarData';
 import formatarDinheiro from '../lib/formatarDinheiro';
-import { PEDIDO_DETALHES_QUERY } from '../queries/pedidos-queries';
 import { PedidosStyle } from './styles/PedidosStyles';
 
 const Itens = styled.div`

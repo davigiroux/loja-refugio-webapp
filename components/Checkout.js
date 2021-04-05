@@ -3,8 +3,8 @@ import { useRouter } from 'next/dist/client/router';
 import nProgress from 'nprogress';
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { PEDIDOS_USUARIO_QUERY } from '../api/queries/pedidos-queries';
 import { useCarrinho } from '../lib/carrinhoState';
-import { PEDIDOS_USUARIO_QUERY } from '../queries/pedidos-queries';
 import { USUARIO_ATUAL_QUERY } from './UsuarioHook';
 
 const CheckoutFormStyles = styled.form`

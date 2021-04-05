@@ -1,6 +1,6 @@
 import { useMutation } from '@apollo/client';
+import { CADASTRAR_MUTATION } from '../api/mutations/cadastrar-mutation';
 import useForm from '../lib/useForm';
-import { CADASTRAR_MUTATION } from '../mutations/cadastrar-mutation';
 import { Fieldset } from './styles/FormFieldSetStyles';
 import { FormGrid } from './styles/GlobalGridStyles';
 

@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/dist/client/router';
+import { LOGAR_MUTATION } from '../api/mutations/logar-mutation';
 import useForm from '../lib/useForm';
-import { LOGAR_MUTATION } from '../mutations/logar-mutation';
 import { Fieldset } from './styles/FormFieldSetStyles';
 import { FormGrid } from './styles/GlobalGridStyles';
 import { USUARIO_ATUAL_QUERY } from './UsuarioHook';

@@ -6,7 +6,6 @@ import {
   ProdutoInfo,
 } from './styles/ProdutosStyles';
 import formatarDinheiro from '../lib/formatarDinheiro';
-import AddNoCarrinho from './AddNoCarrinho';
 
 function Produto({ produto }) {
   return (

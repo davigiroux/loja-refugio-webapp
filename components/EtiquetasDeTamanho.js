@@ -1,4 +1,4 @@
-import { array, bool, string } from 'prop-types';
+import { array, string } from 'prop-types';
 import styled from 'styled-components';
 
 const CustomLabel = styled.label`

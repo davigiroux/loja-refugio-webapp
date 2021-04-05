@@ -2,11 +2,11 @@ import { useQuery } from '@apollo/client';
 import { string } from 'prop-types';
 import { useState } from 'react';
 import formatarDinheiro from '../lib/formatarDinheiro';
-import { PRODUTO_DETALHES_QUERY } from '../queries/produtos-queries';
 import AddNoCarrinho from './AddNoCarrinho';
 import { CenterGrid } from './styles/GlobalGridStyles';
 import { ProdutoDetalhesStyles, Tags } from './styles/ProdutoDetalhesStyles';
 import EtiquetasDeTamanho from './EtiquetasDeTamanho';
+import { PRODUTO_DETALHES_QUERY } from '../api/queries/produtos-queries';
 
 function ProdutoDetalhes({ id }) {
   const { data, error, loading } = useQuery(PRODUTO_DETALHES_QUERY, {
