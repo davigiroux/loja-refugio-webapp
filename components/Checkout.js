@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { PEDIDOS_USUARIO_QUERY } from '../api/queries/pedidos-queries';
 import { useCarrinho } from '../lib/carrinhoState';
-import { USUARIO_ATUAL_QUERY } from './UsuarioHook';
+import { useUsuario, USUARIO_ATUAL_QUERY } from './UsuarioHook';
 
 const CheckoutFormStyles = styled.form`
   box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.04);
@@ -50,13 +50,14 @@ function CheckoutForm() {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
   const { fecharCarrinho } = useCarrinho();
+  const usuario = useUsuario();
   const router = useRouter();
   const [checkout, { error: graphQlError }] = useMutation(
     CRIAR_PEDIDO_MUTATION,
     {
       refetchQueries: [
         { query: USUARIO_ATUAL_QUERY },
-        { query: PEDIDOS_USUARIO_QUERY },
+        { query: PEDIDOS_USUARIO_QUERY, variables: { idUsuario: usuario.id } },
       ],
     }
   );

@@ -1,15 +1,16 @@
 import { useQuery } from '@apollo/client';
-import { string } from 'prop-types';
+import { number, string } from 'prop-types';
 import { ALL_PRODUTOS_QUERY } from '../api/queries/produtos-queries';
+import { porPagina } from '../config';
 import Produto from './Produto';
 import { ProdutosStyles } from './styles/ProdutosStyles';
 
-function Produtos({ moda }) {
+function Produtos({ pagina, tagDeModa }) {
   const { data, error, loading } = useQuery(ALL_PRODUTOS_QUERY, {
     variables: {
-      first: 10,
-      skip: 0,
-      moda,
+      first: porPagina,
+      skip: pagina * porPagina - porPagina,
+      moda: tagDeModa,
     },
   });
 
@@ -28,7 +29,8 @@ function Produtos({ moda }) {
 }
 
 Produtos.propTypes = {
-  moda: string,
+  tagDeModa: string,
+  pagina: number,
 };
 
 export default Produtos;

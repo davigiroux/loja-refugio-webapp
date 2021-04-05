@@ -38,6 +38,7 @@ function AddNoCarrinho({ id, etiqueta }) {
     try {
       await addNoCarrinho();
     } catch (error) {
+      console.error(error);
       alert(error.message);
     }
   };

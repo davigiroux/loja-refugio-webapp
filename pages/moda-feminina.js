@@ -1,8 +1,13 @@
+import { useRouter } from 'next/dist/client/router';
 import React from 'react';
+import Paginacao from '../components/Paginacao';
 import Produtos from '../components/Produtos';
 import { ModaGrid } from '../components/styles/ModaStyles';
 
 function ModaFeminina() {
+  const { query } = useRouter();
+  const pagina = parseInt(query.page);
+
   const MODA_FEMININA = 'moda feminina';
   return (
     <ModaGrid>
@@ -10,7 +15,9 @@ function ModaFeminina() {
         <img src="/mini-logo-feminina.png" alt="logo-feminina" />
         Moda Feminina
       </h1>
-      <Produtos moda={MODA_FEMININA} />
+      <Paginacao pagina={pagina || 1} tagDeModa={MODA_FEMININA} />
+      <Produtos tagDeModa={MODA_FEMININA} pagina={pagina || 1} />
+      <Paginacao pagina={pagina || 1} tagDeModa={MODA_FEMININA} />
     </ModaGrid>
   );
 }

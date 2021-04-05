@@ -11,7 +11,7 @@ export const ModaGrid = styled.div`
     font-weight: 400;
     letter-spacing: 2px;
     border-bottom: 1px solid var(--lightPrimary);
-    margin-bottom: 80px;
+    margin-bottom: 30px;
     display: grid;
     grid-template-rows: auto auto;
     align-items: center;
