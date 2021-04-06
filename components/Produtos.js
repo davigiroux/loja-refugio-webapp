@@ -14,9 +14,8 @@ function Produtos({ pagina, tagDeModa }) {
     },
   });
 
-  if (loading) return <p>Carregando...</p>;
   if (error) return <p>Erro ao buscar as roupas</p>;
-
+  if (loading) return <p>Carregando...</p>;
   const { allProdutos } = data;
 
   return (

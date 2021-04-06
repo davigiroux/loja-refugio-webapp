@@ -48,8 +48,8 @@ function Home() {
         alt="Logo da Loja Refúgio"
       />
       <LinkContainer>
-        <Link href="produtos/moda-feminina">Moda Feminina</Link>
-        <Link href="produtos/moda-masculina">Moda Masculina</Link>
+        <Link href="/produtos/moda-feminina">Moda Feminina</Link>
+        <Link href="/produtos/moda-masculina">Moda Masculina</Link>
       </LinkContainer>
     </HomeContainer>
   );

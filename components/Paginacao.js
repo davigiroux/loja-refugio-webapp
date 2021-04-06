@@ -6,7 +6,7 @@ import { number, string } from 'prop-types';
 import PaginacaoStyles from './styles/PagincaoStyles';
 import MensagemDeErro from './MensagemDeErro';
 import { porPagina } from '../config';
-import { PAGINATION_QUERY } from '../api/queries/paginacao';
+import { PAGINATION_QUERY } from '../api/queries/paginacao-queries';
 
 function Paginacao({ pagina, tagDeModa }) {
   const { error, loading, data } = useQuery(PAGINATION_QUERY, {
@@ -24,7 +24,7 @@ function Paginacao({ pagina, tagDeModa }) {
     <PaginacaoStyles>
       <Head>
         <title>
-          Loj Refúgio - Página {pagina} de {totalDePaginas}
+          Loja Refúgio - Página {pagina} de {totalDePaginas}
         </title>
       </Head>
       <Link href={`/produtos/${tagDeModa}/${pagina - 1}`}>
