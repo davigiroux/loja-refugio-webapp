@@ -13,7 +13,7 @@ function Paginacao({ pagina, tagDeModa }) {
     variables: { tagDeModa: tagDeModa.replace('-', ' ') },
   });
 
-  if (loading) return 'Loading...';
+  if (loading) return 'Carregando paginação...';
 
   if (error) return <MensagemDeErro error={error} />;
 
@@ -33,7 +33,7 @@ function Paginacao({ pagina, tagDeModa }) {
       <p>
         Página {pagina} de {totalDePaginas}
       </p>
-      <p>{total} Total de itens</p>
+      <p>Total de {total} itens</p>
       <Link href={`/produtos/${tagDeModa}/${pagina + 1}`}>
         <a aria-disabled={pagina >= totalDePaginas}>Próxima</a>
       </Link>
