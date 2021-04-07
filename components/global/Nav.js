@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from 'next/image';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
@@ -125,7 +124,12 @@ function Nav() {
     <Navbar>
       <Link href="/">
         <Logo>
-          <Image src="/logo-refugio.png" width="200" height="90" />
+          <img
+            src="https://res.cloudinary.com/dnyrymvie/image/upload/v1617831342/loja-refugio/logo-refugio_ncuqrr.png"
+            width="200"
+            height="90"
+            alt="logo"
+          />
         </Logo>
       </Link>
       <SearchBox>

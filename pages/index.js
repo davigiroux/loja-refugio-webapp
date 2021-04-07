@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Link from 'next/link';
-import Image from 'next/image';
 
 const HomeContainer = styled.div`
   display: grid;
@@ -41,8 +40,8 @@ const LinkContainer = styled.div`
 function Home() {
   return (
     <HomeContainer>
-      <Image
-        src="/logo-refugio.png"
+      <img
+        src="https://res.cloudinary.com/dnyrymvie/image/upload/v1617831342/loja-refugio/logo-refugio_ncuqrr.png"
         width="600"
         height="320"
         alt="Logo da Loja Refúgio"
