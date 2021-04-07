@@ -16,7 +16,7 @@ function ModaFeminina() {
         Moda Feminina
       </h1>
       <Paginacao pagina={pagina || 1} tagDeModa={MODA_FEMININA} />
-      <Produtos tagDeModa={MODA_FEMININA} pagina={pagina || 1} />
+      <Produtos pagina={pagina || 1} tagDeModa={MODA_FEMININA} />
       <Paginacao pagina={pagina || 1} tagDeModa={MODA_FEMININA} />
     </ModaGrid>
   );
