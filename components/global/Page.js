@@ -56,11 +56,6 @@ const InnerStyle = styled.div`
 `;
 
 function Page({ children }) {
-  const httpTokens = /^http:\/\/(.*)$/.exec(window.location.href);
-  if (httpTokens) {
-    window.location.replace(`https://${httpTokens[1]}`);
-  }
-
   return (
     <div>
       <Head>
