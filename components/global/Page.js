@@ -60,15 +60,6 @@ function Page({ children }) {
     <div>
       <Head>
         <title>Loja Refúgio</title>
-        <link
-          rel="icon"
-          type="image/png"
-          sizes="32x32"
-          href="https://res.cloudinary.com/dnyrymvie/image/upload/v1617835417/loja-refugio/favicon-32x32_jxwxh7.png"
-        />
-        <link rel="manifest" href="/favicon/manifest.json" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="theme-color" content="#ffffff" />
       </Head>
 
       <GlobalStyles />
