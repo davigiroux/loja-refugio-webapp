@@ -35,6 +35,9 @@ function CadastrarForm() {
               Tudo certo para logar!
             </p>
           )}
+          {error && (
+            <p style={{ color: 'red' }}>Houve um erro ao tentar cadastrar</p>
+          )}
           <label htmlFor="name">
             <input
               type="text"
