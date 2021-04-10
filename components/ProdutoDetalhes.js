@@ -19,7 +19,6 @@ function ProdutoDetalhes({ id }) {
   if (error) return <p>Erro ao buscar o produto</p>;
 
   const { Produto: produto } = data;
-
   return (
     <CenterGrid>
       <ProdutoDetalhesStyles>

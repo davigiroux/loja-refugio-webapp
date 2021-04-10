@@ -17,16 +17,11 @@ const CustomRadio = styled.input`
 `;
 
 function EtiquetasDeTamanho({ estoque, etiquetaSelecionada }) {
-  const tamanhos = ['PP', 'P', 'M', 'G', 'GG'];
-
-  const etiquetas = tamanhos.map((tamanho) => {
-    const item = estoque.find((e) => e.etiqueta === tamanho);
-
-    return {
-      tamanho,
-      quantidade: item ? item.quantidade : 0,
-    };
-  });
+  const etiquetas = estoque.map((e) => ({
+    tamanho: e.etiqueta,
+    quantidade: e.quantidade,
+    texto: e.etiqueta === 'tamanho-unico' ? 'Tamanho único' : e.etiqueta,
+  }));
 
   return (
     <>
@@ -34,9 +29,10 @@ function EtiquetasDeTamanho({ estoque, etiquetaSelecionada }) {
         <CustomLabel
           key={index}
           htmlFor={`etiqueta-${etiqueta.tamanho}`}
-          className={`tamanho-etiqueta ${
-            etiqueta.quantidade > 0 ? '' : 'indisponivel'
-          } ${etiquetaSelecionada === etiqueta.tamanho ? 'selecionado' : ''}`}
+          className={`tamanho-etiqueta 
+          ${etiqueta.quantidade > 0 ? '' : 'indisponivel'} 
+          ${etiquetaSelecionada === etiqueta.tamanho ? 'selecionado' : ''}
+          ${etiqueta.tamanho === 'tamanho-unico' ? 'texto' : 'circulo'}`}
         >
           <CustomRadio
             type="radio"
@@ -45,7 +41,7 @@ function EtiquetasDeTamanho({ estoque, etiquetaSelecionada }) {
             value={etiqueta.tamanho}
             disabled={etiqueta.quantidade <= 0}
           />
-          {etiqueta.tamanho}
+          {etiqueta.texto}
         </CustomLabel>
       ))}
     </>

@@ -36,6 +36,16 @@ export const ProdutoDetalhesStyles = styled.div`
       grid-template-columns: repeat(5, 1fr);
 
       .tamanho-etiqueta {
+        &.indisponivel {
+          background-color: var(--lightGrey);
+          color: var(--grey);
+          border-color: var(--grey);
+          cursor: not-allowed;
+          text-decoration: line-through;
+        }
+      }
+
+      .circulo {
         display: grid;
         border: 1px solid var(--grey);
         border-radius: 40px;
@@ -44,14 +54,14 @@ export const ProdutoDetalhesStyles = styled.div`
         justify-content: center;
         align-content: center;
         cursor: pointer;
+      }
 
-        &.indisponivel {
-          background-color: var(--lightGrey);
-          color: var(--grey);
-          border-color: var(--grey);
-          cursor: not-allowed;
-          text-decoration: line-through;
-        }
+      .texto {
+        display: grid;
+        border: 1px solid var(--grey);
+        width: 135px;
+        align-content: center;
+        justify-content: center;
       }
     }
   }
