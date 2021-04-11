@@ -7,6 +7,7 @@ import { useUsuario } from '../UsuarioHook';
 import Sair from '../Sair';
 import { useCarrinho } from '../../lib/carrinhoState';
 import Carrinho from '../Carrinho';
+import Busca from '../Busca';
 
 const Navbar = styled.div`
   display: grid;
@@ -29,22 +30,6 @@ const Logo = styled.span`
   img {
     cursor: pointer;
   }
-`;
-
-const SearchBox = styled.div`
-  width: auto;
-
-  .fa-search {
-    position: absolute;
-    font-size: 20px;
-    color: var(--primary);
-  }
-`;
-
-const SearchInput = styled.input`
-  width: 100%;
-  height: 35px;
-  padding: 0 15px;
 `;
 
 const NavLinks = styled.div`
@@ -132,10 +117,7 @@ function Nav() {
           />
         </Logo>
       </Link>
-      <SearchBox>
-        <SearchInput placeholder="Buscar por mais roupas..." />
-        <FontAwesomeIcon icon={faSearch} transform="left-25 down-5" />
-      </SearchBox>
+      <Busca />
       <Carrinho suppressHydrationWarning />
       <NavLinks>
         <ul>
