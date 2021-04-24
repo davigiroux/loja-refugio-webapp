@@ -6,7 +6,7 @@ import { number, string } from 'prop-types';
 import PaginacaoStyles from './styles/PagincaoStyles';
 import MensagemDeErro from './MensagemDeErro';
 import { porPagina } from '../config';
-import { PAGINATION_QUERY } from '../api/queries/paginacao-queries';
+import { PAGINATION_QUERY } from '../api/queries/paginacaoQueries';
 
 function Paginacao({ pagina, tagDeModa }) {
   const { error, loading, data } = useQuery(PAGINATION_QUERY, {

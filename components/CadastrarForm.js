@@ -1,5 +1,6 @@
 import { useMutation } from '@apollo/client';
-import { CADASTRAR_MUTATION } from '../api/mutations/cadastrar-mutation';
+import { CADASTRAR_MUTATION } from '../api/mutations/cadastrarMutation';
+import { formatarTelefone } from '../lib/formatarTelefone';
 import useForm from '../lib/useForm';
 import { Fieldset } from './styles/FormFieldSetStyles';
 import { FormGrid } from './styles/GlobalGridStyles';
@@ -9,6 +10,7 @@ function CadastrarForm() {
     email: '',
     senha: '',
     name: '',
+    telefone: '',
   });
 
   const [cadastrar, { data, loading, error }] = useMutation(
@@ -55,6 +57,16 @@ function CadastrarForm() {
               placeholder="Seu email"
               autoComplete="email"
               value={inputs.email}
+              onChange={handleChange}
+            />
+          </label>
+          <label htmlFor="telefone">
+            <input
+              type="text"
+              name="telefone"
+              placeholder="Seu telefone (Whatsapp)"
+              autoComplete="phone"
+              value={inputs.telefone}
               onChange={handleChange}
             />
           </label>

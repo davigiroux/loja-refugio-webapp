@@ -6,7 +6,7 @@ import AddNoCarrinho from './AddNoCarrinho';
 import { CenterGrid } from './styles/GlobalGridStyles';
 import { ProdutoDetalhesStyles, Tags } from './styles/ProdutoDetalhesStyles';
 import EtiquetasDeTamanho from './EtiquetasDeTamanho';
-import { PRODUTO_DETALHES_QUERY } from '../api/queries/produtos-queries';
+import { PRODUTO_DETALHES_QUERY } from '../api/queries/produtosQueries';
 
 function ProdutoDetalhes({ id }) {
   const { data, error, loading } = useQuery(PRODUTO_DETALHES_QUERY, {
@@ -32,7 +32,9 @@ function ProdutoDetalhes({ id }) {
           <h3>{produto.name}</h3>
           <p className="preco">{formatarDinheiro(produto.preco)}</p>
           <div className="tamanhos">
-            tamanhos:
+            {produto.estoque.length > 0
+              ? 'tamanhos:'
+              : 'Sem estoque disponível'}
             <div
               className="etiquetas"
               onChange={(e) => setTamanhoEtiqueta(e.target.value)}
@@ -50,7 +52,11 @@ function ProdutoDetalhes({ id }) {
               </span>
             ))}
           </Tags>
-          <AddNoCarrinho id={produto.id} etiqueta={tamanhoEtiqueta} />
+          <AddNoCarrinho
+            id={produto.id}
+            etiqueta={tamanhoEtiqueta}
+            desabilitado={tamanhoEtiqueta === ''}
+          />
         </div>
       </ProdutoDetalhesStyles>
     </CenterGrid>

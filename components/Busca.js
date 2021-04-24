@@ -5,7 +5,7 @@ import debounce from 'lodash.debounce';
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { BUSCAR_PRODUTOS_QUERY } from '../api/queries/busca-query';
+import { BUSCAR_PRODUTOS_QUERY } from '../api/queries/buscaQuery';
 import { DropDown, DropDownItem, SearchStyles } from './styles/DropDown';
 
 function Busca() {

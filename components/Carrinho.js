@@ -7,9 +7,10 @@ import { useUsuario } from './UsuarioHook';
 import CarrinhoStyles from './styles/CarrinhoStyles';
 import formatarDinheiro from '../lib/formatarDinheiro';
 import calcularPrecoTotal from '../lib/calcularPrecoTotal';
-import Checkout from './Checkout';
+import BotaoDeFazerPedido from './BotaoDeFazerPedido';
 
 const ItemCarrinhoStyles = styled.li`
+  display: grid;
   padding: 1rem 0;
   border-bottom: 1px solid var(--lightGrey);
   display: grid;
@@ -17,6 +18,7 @@ const ItemCarrinhoStyles = styled.li`
   padding-right: 15px;
   img {
     margin-right: 1rem;
+    align-self: center;
   }
   h3,
   p {
@@ -57,6 +59,8 @@ ItemCarrinho.propTypes = {
   itemCarrinho: any,
 };
 
+export { ItemCarrinho };
+
 function Carrinho() {
   const usuario = useUsuario();
   const { carrinhoAberto, fecharCarrinho } = useCarrinho();
@@ -82,7 +86,7 @@ function Carrinho() {
       </ul>
       <footer>
         <p>{formatarDinheiro(calcularPrecoTotal(usuario.carrinho))}</p>
-        <Checkout />
+        <BotaoDeFazerPedido />
       </footer>
     </CarrinhoStyles>
   );

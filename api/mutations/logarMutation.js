@@ -8,6 +8,7 @@ export const LOGAR_MUTATION = gql`
           id
           name
           email
+          telefone
         }
       }
       ... on UsuarioAuthenticationWithPasswordFailure {

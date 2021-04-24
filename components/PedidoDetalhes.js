@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/client';
 import { string } from 'prop-types';
 import styled from 'styled-components';
-import { PEDIDO_DETALHES_QUERY } from '../api/queries/pedidos-queries';
+import { PEDIDO_DETALHES_QUERY } from '../api/queries/pedidosQueries';
 import { formatarData } from '../lib/formatarData';
 import formatarDinheiro from '../lib/formatarDinheiro';
 import { PedidosStyle } from './styles/PedidosStyles';
@@ -63,6 +63,8 @@ function PedidoDetalhes({ id }) {
         <h2>Pedido nº {pedido.codigo}</h2>
         <p>
           <em>Pedido feito em: {formatarData(pedido.dataPedido)}</em>
+          <br />
+          <em>Status: {pedido.status}</em>
         </p>
         <h3>Itens</h3>
         <Itens>

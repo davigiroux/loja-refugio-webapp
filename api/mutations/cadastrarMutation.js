@@ -5,11 +5,15 @@ export const CADASTRAR_MUTATION = gql`
     $email: String!
     $name: String!
     $senha: String!
+    $telefone: String!
   ) {
-    createUsuario(data: { email: $email, name: $name, senha: $senha }) {
+    createUsuario(
+      data: { email: $email, name: $name, senha: $senha, telefone: $telefone }
+    ) {
       id
       email
       name
+      telefone
     }
   }
 `;

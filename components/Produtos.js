@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 import { number, string } from 'prop-types';
-import { ALL_PRODUTOS_QUERY } from '../api/queries/produtos-queries';
+import { ALL_PRODUTOS_QUERY } from '../api/queries/produtosQueries';
 import { porPagina } from '../config';
 import Produto from './Produto';
 import { ProdutosStyles } from './styles/ProdutosStyles';

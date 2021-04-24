@@ -1,50 +1,12 @@
-import { gql, useMutation } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { useRouter } from 'next/dist/client/router';
 import nProgress from 'nprogress';
 import React, { useState } from 'react';
-import styled from 'styled-components';
-import { PEDIDOS_USUARIO_QUERY } from '../api/queries/pedidos-queries';
+import { CRIAR_PEDIDO_MUTATION } from '../api/mutations/pedidoMutation';
+import { PEDIDOS_USUARIO_QUERY } from '../api/queries/pedidosQueries';
 import { useCarrinho } from '../lib/carrinhoState';
+import { CheckoutFormStyles, SickButton } from './styles/CheckoutStyles';
 import { useUsuario, USUARIO_ATUAL_QUERY } from './UsuarioHook';
-
-const CheckoutFormStyles = styled.form`
-  box-shadow: 0 1px 2px 2px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 5px;
-  padding: 1rem;
-  display: grid;
-  gap: 1rem;
-`;
-
-const SickButton = styled.button`
-  background: var(--primary);
-  color: white;
-  font-weight: 500;
-  border: 0;
-  border-radius: 0;
-  text-transform: uppercase;
-  font-size: 2rem;
-  padding: 0.8rem 1.5rem;
-  transform: skew(-2deg);
-  display: inline-block;
-  transition: all 0.5s;
-  &[disabled] {
-    opacity: 0.5;
-  }
-`;
-
-const CRIAR_PEDIDO_MUTATION = gql`
-  mutation CRIAR_PEDIDO_MUTATION {
-    checkout {
-      id
-      total
-      itens {
-        id
-        name
-      }
-    }
-  }
-`;
 
 function CheckoutForm() {
   const [error, setError] = useState();

@@ -6,7 +6,7 @@ import { faReceipt } from '@fortawesome/free-solid-svg-icons';
 import { formatarData } from '../lib/formatarData';
 import formatarDinheiro from '../lib/formatarDinheiro';
 import { PedidosStyle, PedidoStyle } from './styles/PedidosStyles';
-import { PEDIDOS_USUARIO_QUERY } from '../api/queries/pedidos-queries';
+import { PEDIDOS_USUARIO_QUERY } from '../api/queries/pedidosQueries';
 
 function MeusPedidos({ usuario }) {
   const { data, error, loading } = useQuery(PEDIDOS_USUARIO_QUERY, {

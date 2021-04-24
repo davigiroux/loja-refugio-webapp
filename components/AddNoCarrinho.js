@@ -1,9 +1,10 @@
 import { gql, useMutation } from '@apollo/client';
 import { faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { string } from 'prop-types';
+import { useRouter } from 'next/dist/client/router';
+import { bool, string } from 'prop-types';
 import styled from 'styled-components';
-import { USUARIO_ATUAL_QUERY } from './UsuarioHook';
+import { useUsuario, USUARIO_ATUAL_QUERY } from './UsuarioHook';
 
 const ADD_NO_CARRINHO_MUTATION = gql`
   mutation ADD_NO_CARRINHO_MUTATION($id: ID!, $etiqueta: String!) {
@@ -28,7 +29,9 @@ const Botao = styled.button`
   }
 `;
 
-function AddNoCarrinho({ id, etiqueta }) {
+function AddNoCarrinho({ id, etiqueta, desabilitado }) {
+  const usuario = useUsuario();
+  const router = useRouter();
   const [addNoCarrinho, { loading }] = useMutation(ADD_NO_CARRINHO_MUTATION, {
     variables: { id, etiqueta },
     refetchQueries: [{ query: USUARIO_ATUAL_QUERY }],
@@ -36,6 +39,11 @@ function AddNoCarrinho({ id, etiqueta }) {
 
   const addItem = async () => {
     try {
+      if (!usuario) {
+        alert('Você deve logar primeiro para adicionar roupas no carrinho!');
+        router.push({ pathname: '/login' });
+        return;
+      }
       await addNoCarrinho();
     } catch (error) {
       console.error(error);
@@ -43,7 +51,7 @@ function AddNoCarrinho({ id, etiqueta }) {
     }
   };
   return (
-    <Botao type="button" onClick={addItem} disabled={loading}>
+    <Botao type="button" onClick={addItem} disabled={loading || desabilitado}>
       <FontAwesomeIcon icon={faShoppingBag} transform="left-8" size="lg" />
       {loading ? 'Adicionando' : 'Adicionar no carrinho'}
     </Botao>
@@ -53,6 +61,7 @@ function AddNoCarrinho({ id, etiqueta }) {
 AddNoCarrinho.propTypes = {
   id: string,
   etiqueta: string,
+  desabilitado: bool,
 };
 
 export default AddNoCarrinho;
