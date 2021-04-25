@@ -15,6 +15,9 @@ export const USUARIO_ATUAL_QUERY = gql`
             id
             preco
             name
+            tags {
+              name
+            }
             foto {
               imagem {
                 publicUrlTransformed

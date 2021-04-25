@@ -1,8 +1,8 @@
 import { CenterGrid } from '../components/styles/GlobalGridStyles';
 
 function Contato() {
-  const numeroFeminino = '+5567999778116';
-  const numeroMasculino = '+5567991242757';
+  const numeroMasculino = '+5567999778116';
+  const numeroFeminino = '+5567991242757';
   const linkParaWhatsappFeminino = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
     numeroFeminino
   )}`;

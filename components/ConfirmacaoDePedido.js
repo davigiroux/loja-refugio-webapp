@@ -13,14 +13,22 @@ const Observacao = styled.div`
 
 function ConfirmacaoDePedido() {
   const router = useRouter();
-  const numero = '+5567991242757';
+  const numeroMasculino = '+5567999778116';
+  const numeroFeminino = '+5567991242757';
   const mensagem = 'Olá, gostaria de falar com o atendimento da Loja Refúgio!';
-  const linkParaWhatsapp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
-    numero
-  )}&text=${encodeURIComponent(mensagem)}`;
 
   const usuario = useUsuario();
   if (!usuario) router.push({ pathname: '/' });
+
+  const ehApenasModaMasculina = usuario.carrinho.every((item) =>
+    item.produto.tags.every((tag) => tag.name === 'moda masculina')
+  );
+
+  const numeroWhats = ehApenasModaMasculina ? numeroMasculino : numeroFeminino;
+
+  const linkParaWhatsapp = `https://api.whatsapp.com/send?phone=${encodeURIComponent(
+    numeroWhats
+  )}&text=${encodeURIComponent(mensagem)}`;
   return (
     <CenterGrid>
       <div>
