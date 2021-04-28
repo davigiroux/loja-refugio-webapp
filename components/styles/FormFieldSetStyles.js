@@ -18,6 +18,10 @@ export const Fieldset = styled.fieldset`
     padding: 10px 15px;
     font-size: 12px;
     width: 100%;
+
+    &.invalido {
+      border: 1px solid red;
+    }
   }
 
   button {
