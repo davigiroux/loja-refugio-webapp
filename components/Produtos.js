@@ -20,6 +20,7 @@ function Produtos({ pagina, tagDeModa }) {
 
   return (
     <ProdutosStyles>
+      {allProdutos.length <= 0 && <em>Nenhum produto encontrado</em>}
       {allProdutos.map((produto) => (
         <Produto produto={produto} key={produto.id} />
       ))}

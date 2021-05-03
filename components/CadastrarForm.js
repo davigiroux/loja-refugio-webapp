@@ -62,7 +62,7 @@ function CadastrarForm() {
   const validarSenha = (e) => {
     const senha = e.target.value;
 
-    const senhaFortePattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    const senhaFortePattern = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d][\w~@#$%^&*+=`|{}:;!.?\"()\[\]-]{8,}$/;
     setSenhaEhValida(senhaFortePattern.test(senha));
 
     handleChange(e);

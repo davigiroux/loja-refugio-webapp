@@ -32,9 +32,7 @@ function ProdutoDetalhes({ id }) {
           <h3>{produto.name}</h3>
           <p className="preco">{formatarDinheiro(produto.preco)}</p>
           <div className="tamanhos">
-            {produto.estoque.length > 0
-              ? 'tamanhos:'
-              : 'Sem estoque disponível'}
+            {produto.estoque.length > 0 ? 'tamanhos:' : 'Esgotado'}
             <div
               className="etiquetas"
               onChange={(e) => setTamanhoEtiqueta(e.target.value)}
