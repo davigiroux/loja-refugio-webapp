@@ -21,7 +21,8 @@ function ProdutoDetalhes({ id }) {
 
   useEffect(() => {
     setFotoSelecionada(
-      data.Produto.fotos.find((f) => f.principal).imagem.publicUrlTransformed
+      data?.Produto?.fotos.find((f) => f.principal).imagem
+        .publicUrlTransformed || ''
     );
   }, [data]);
 
