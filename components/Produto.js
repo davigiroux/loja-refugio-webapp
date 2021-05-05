@@ -13,8 +13,8 @@ function Produto({ produto }) {
       <Link href={`/produto/${produto.id}`}>
         <ProdutoInfo>
           <img
-            src={produto?.foto?.imagem?.publicUrlTransformed}
-            alt={produto?.foto?.imagem?.tituloDaImagem}
+            src={produto?.fotos[0]?.imagem?.publicUrlTransformed}
+            alt={produto?.fotos[0]?.imagem?.tituloDaImagem}
           />
           <p>{produto.name}</p>
           <ValorDoProduto>{formatarDinheiro(produto.preco)}</ValorDoProduto>

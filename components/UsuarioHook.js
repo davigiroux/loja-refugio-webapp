@@ -18,7 +18,7 @@ export const USUARIO_ATUAL_QUERY = gql`
             tags {
               name
             }
-            foto {
+            fotos {
               imagem {
                 publicUrlTransformed
               }

@@ -2,9 +2,13 @@ import styled from 'styled-components';
 
 export const ProdutoDetalhesStyles = styled.div`
   display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 60px;
+  grid-template-columns: 390px 1fr;
+  column-gap: 60px;
   margin-top: 30px;
+
+  > img {
+    justify-self: center;
+  }
 
   h3 {
     color: var(--black);
@@ -63,6 +67,35 @@ export const ProdutoDetalhesStyles = styled.div`
         align-content: center;
         justify-content: center;
       }
+    }
+  }
+`;
+
+export const GridDeFotos = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  gap: 10px;
+  margin-top: 15px;
+  justify-content: left;
+
+  .caixa-imagem {
+    width: 70px;
+    border: 1px solid var(--lightPrimary);
+    display: grid;
+
+    img {
+      width: 100%;
+      height: 70px;
+      object-fit: cover;
+    }
+
+    &:hover {
+      border: 1px solid var(--primary);
+      cursor: pointer;
+    }
+
+    &.selecionada {
+      border: 2px solid var(--primary);
     }
   }
 `;

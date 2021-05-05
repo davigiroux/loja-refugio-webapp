@@ -27,7 +27,7 @@ export const PEDIDO_DETALHES_QUERY = gql`
         name
         quantidade
         preco
-        foto {
+        fotos {
           imagem {
             publicUrlTransformed
           }

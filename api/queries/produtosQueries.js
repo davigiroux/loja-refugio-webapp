@@ -5,7 +5,7 @@ export const ALL_PRODUTOS_QUERY = gql`
     allProdutos(
       first: $first
       skip: $skip
-      where: { tags_some: { name: $moda } }
+      where: { tags_some: { name: $moda }, fotos_some: { principal: true } }
     ) {
       id
       name
@@ -13,8 +13,9 @@ export const ALL_PRODUTOS_QUERY = gql`
       tags {
         name
       }
-      foto {
+      fotos {
         id
+        principal
         imagem {
           publicUrlTransformed
         }
@@ -29,7 +30,8 @@ export const PRODUTO_DETALHES_QUERY = gql`
       id
       name
       preco
-      foto {
+      fotos {
+        principal
         imagem {
           publicUrlTransformed
         }

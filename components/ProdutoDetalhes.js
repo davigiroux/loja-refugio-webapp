@@ -1,10 +1,14 @@
 import { useQuery } from '@apollo/client';
 import { string } from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import formatarDinheiro from '../lib/formatarDinheiro';
 import AddNoCarrinho from './AddNoCarrinho';
 import { CenterGrid } from './styles/GlobalGridStyles';
-import { ProdutoDetalhesStyles, Tags } from './styles/ProdutoDetalhesStyles';
+import {
+  GridDeFotos,
+  ProdutoDetalhesStyles,
+  Tags,
+} from './styles/ProdutoDetalhesStyles';
 import EtiquetasDeTamanho from './EtiquetasDeTamanho';
 import { PRODUTO_DETALHES_QUERY } from '../api/queries/produtosQueries';
 
@@ -13,17 +17,25 @@ function ProdutoDetalhes({ id }) {
     variables: { id },
   });
   const [tamanhoEtiqueta, setTamanhoEtiqueta] = useState('');
+  const [fotoSelecionada, setFotoSelecionada] = useState('');
+
+  useEffect(() => {
+    setFotoSelecionada(
+      data.Produto.fotos.find((f) => f.principal).imagem.publicUrlTransformed
+    );
+  }, [data]);
 
   if (loading) return <p>Carregando...</p>;
 
   if (error) return <p>Erro ao buscar o produto</p>;
 
   const { Produto: produto } = data;
+
   return (
     <CenterGrid>
       <ProdutoDetalhesStyles>
         <img
-          src={produto.foto.imagem.publicUrlTransformed}
+          src={fotoSelecionada}
           width="auto"
           height="350"
           alt={produto.name}
@@ -56,6 +68,24 @@ function ProdutoDetalhes({ id }) {
             desabilitado={tamanhoEtiqueta === ''}
           />
         </div>
+        <GridDeFotos>
+          {produto.fotos.map((foto) => (
+            <button
+              key={foto.id}
+              type="button"
+              className={`caixa-imagem ${
+                fotoSelecionada === foto.imagem.publicUrlTransformed
+                  ? 'selecionada'
+                  : ''
+              }`}
+              onClick={() =>
+                setFotoSelecionada(foto.imagem.publicUrlTransformed)
+              }
+            >
+              <img src={foto.imagem.publicUrlTransformed} alt={foto.id} />
+            </button>
+          ))}
+        </GridDeFotos>
       </ProdutoDetalhesStyles>
     </CenterGrid>
   );

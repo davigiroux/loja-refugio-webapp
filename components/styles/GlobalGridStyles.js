@@ -17,7 +17,7 @@ export const CenterGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 
-  div {
+  > div {
     grid-column: 2/3;
 
     h2 {

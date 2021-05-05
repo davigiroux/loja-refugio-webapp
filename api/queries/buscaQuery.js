@@ -5,7 +5,8 @@ export const BUSCAR_PRODUTOS_QUERY = gql`
     searchTerms: allProdutos(where: { name_contains_i: $searchTerm }) {
       id
       name
-      foto {
+      fotos {
+        principal
         imagem {
           publicUrlTransformed
         }
