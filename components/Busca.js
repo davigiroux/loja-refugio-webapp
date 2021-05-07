@@ -47,16 +47,6 @@ function Busca() {
     itemToString: (item) => item.name || '',
   });
 
-  const SearchBox = styled.div`
-    width: auto;
-
-    .fa-search {
-      position: absolute;
-      font-size: 20px;
-      color: var(--primary);
-    }
-  `;
-
   return (
     <SearchStyles>
       <div {...getComboboxProps()}>
@@ -79,7 +69,7 @@ function Busca() {
               key={item.id}
             >
               <img
-                src={item.foto.imagem.publicUrlTransformed}
+                src={item.fotos[0].imagem.publicUrlTransformed}
                 alt={item.name}
                 width="50"
               />
