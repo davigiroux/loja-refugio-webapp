@@ -5,6 +5,8 @@ const DropDown = styled.div`
   width: 100%;
   z-index: 2;
   border: 1px solid var(--lightGray);
+  max-height: 80vh;
+  overflow-y: scroll;
 `;
 
 const DropDownItem = styled.div`

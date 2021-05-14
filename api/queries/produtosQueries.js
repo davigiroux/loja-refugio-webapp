@@ -29,6 +29,7 @@ export const PRODUTO_DETALHES_QUERY = gql`
     Produto(where: { id: $id }) {
       id
       name
+      descricao
       preco
       fotos {
         principal

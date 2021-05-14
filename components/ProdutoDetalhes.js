@@ -31,6 +31,7 @@ function ProdutoDetalhes({ id }) {
   if (error) return <p>Erro ao buscar o produto</p>;
 
   const { Produto: produto } = data;
+  console.log(produto);
 
   return (
     <CenterGrid>
@@ -44,6 +45,7 @@ function ProdutoDetalhes({ id }) {
         <div>
           <h3>{produto.name}</h3>
           <p className="preco">{formatarDinheiro(produto.preco)}</p>
+          <p>{produto.descricao}</p>
           <div className="tamanhos">
             {produto.estoque.length > 0 ? 'tamanhos:' : 'Esgotado'}
             <div

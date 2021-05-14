@@ -23,13 +23,14 @@ export const ProdutoDetalhesStyles = styled.div`
     font-weight: 600;
     font-size: 20px;
     margin: 0;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 
   .tamanhos {
     display: grid;
     grid-template-rows: 1fr auto;
     gap: 15px;
+    color: var(--grey);
 
     .etiquetas {
       justify-items: center;
