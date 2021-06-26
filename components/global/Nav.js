@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { useUsuario } from '../UsuarioHook';
 import Sair from '../Sair';
 import { useCarrinho } from '../../lib/carrinhoState';
 import Carrinho from '../Carrinho';
 import Busca from '../Busca';
+import MobileLinks from './MobileLinks';
+import { useMobileMenu } from '../../contexts/MobileMenuContext';
 
 const Navbar = styled.div`
   display: grid;
@@ -29,6 +31,11 @@ const Logo = styled.span`
 
   img {
     cursor: pointer;
+
+    @media (max-width: 600px) {
+      width: 80px;
+      height: auto;
+    }
   }
 `;
 
@@ -99,11 +106,37 @@ const NavLinks = styled.div`
       }
     }
   }
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const NavLinksMobile = styled.nav`
+  display: none;
+  @media (max-width: 600px) {
+    display: block;
+
+    a,
+    #botao-hamburguer {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: var(--offWhite);
+      font-size: 18px;
+
+      .fa-shopping-bag {
+        font-size: 28px;
+        margin-top: 17px;
+      }
+    }
+  }
 `;
 
 function Nav() {
   const usuario = useUsuario();
   const { abrirCarrinho } = useCarrinho();
+  const { abrirMenu } = useMobileMenu();
 
   return (
     <Navbar>
@@ -159,6 +192,12 @@ function Nav() {
           )}
         </ul>
       </NavLinks>
+      <NavLinksMobile>
+        <button type="button" id="botao-hamburguer" onClick={() => abrirMenu()}>
+          <FontAwesomeIcon icon={faBars} />
+        </button>
+        <MobileLinks />
+      </NavLinksMobile>
     </Navbar>
   );
 }

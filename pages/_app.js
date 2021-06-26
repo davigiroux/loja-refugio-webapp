@@ -10,6 +10,7 @@ import withData from '../lib/withData';
 import Page from '../components/global/Page';
 import Nav from '../components/global/Nav';
 import { CarrinhoStateProvider } from '../lib/carrinhoState';
+import { MobileMenuStateProvider } from '../contexts/MobileMenuContext';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
@@ -18,12 +19,14 @@ Router.events.on('routeChangeError', () => NProgress.done());
 function App({ Component, pageProps, apollo }) {
   return (
     <ApolloProvider client={apollo}>
-      <CarrinhoStateProvider>
-        <Nav />
-        <Page>
-          <Component {...pageProps} />
-        </Page>
-      </CarrinhoStateProvider>
+      <MobileMenuStateProvider>
+        <CarrinhoStateProvider>
+          <Nav />
+          <Page>
+            <Component {...pageProps} />
+          </Page>
+        </CarrinhoStateProvider>
+      </MobileMenuStateProvider>
     </ApolloProvider>
   );
 }
