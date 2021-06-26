@@ -2,13 +2,22 @@ import styled from 'styled-components';
 
 export const PedidosStyle = styled.div`
   display: grid;
-  grid-template-columns: 400px 1fr 400px;
+  grid-template-columns: 1fr minmax(700px, 1fr) 1fr;
 
   > div {
     grid-column: 2/3;
 
     h2 {
       color: var(--primary);
+    }
+  }
+
+  @media (max-width: 600px) {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    > div {
+      grid-column: 1/-1;
     }
   }
 `;
@@ -36,5 +45,21 @@ export const PedidoStyle = styled.div`
   .valor-do-pedido {
     font-size: 18px;
     color: var(--grey);
+  }
+
+  @media (max-width: 600px) {
+    font-size: 12px;
+    gap: 5px;
+    padding: 5px 10px;
+    .link-do-pedido {
+      font-size: 13px;
+    }
+
+    .valor-do-pedido {
+      font-size: 11px;
+    }
+
+    h2 {
+    }
   }
 `;

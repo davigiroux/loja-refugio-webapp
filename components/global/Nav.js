@@ -10,6 +10,7 @@ import Carrinho from '../Carrinho';
 import Busca from '../Busca';
 import MobileLinks from './MobileLinks';
 import { useMobileMenu } from '../../contexts/MobileMenuContext';
+import CarrinhoButton from './CarrinhoButton';
 
 const Navbar = styled.div`
   display: grid;
@@ -86,8 +87,7 @@ const NavLinks = styled.div`
         }
       }
 
-      a,
-      #carrinho {
+      a {
         background-color: transparent;
         border: none;
         cursor: pointer;
@@ -155,6 +155,14 @@ function Nav() {
   const usuario = useUsuario();
   const { abrirCarrinho } = useCarrinho();
   const { abrirMenu } = useMobileMenu();
+  let qtdItens = 0;
+  if (usuario) {
+    qtdItens = usuario?.carrinho?.reduce(
+      (acumulado, itemCarrinho) =>
+        acumulado + (itemCarrinho.produto ? itemCarrinho.quantidade : 0),
+      0
+    );
+  }
 
   return (
     <Navbar>
@@ -181,17 +189,10 @@ function Nav() {
                 <Link href="/pedidos">Meus pedidos</Link>
               </li>
               <li>
-                <button id="carrinho" type="button" onClick={abrirCarrinho}>
-                  <FontAwesomeIcon icon={faShoppingBag} />
-                  <div className="items-counter">
-                    {usuario.carrinho.reduce(
-                      (acumulado, itemCarrinho) =>
-                        acumulado +
-                        (itemCarrinho.produto ? itemCarrinho.quantidade : 0),
-                      0
-                    )}
-                  </div>
-                </button>
+                <CarrinhoButton
+                  handleClick={abrirCarrinho}
+                  qtdItens={qtdItens}
+                />
               </li>
               <li>
                 <Sair />

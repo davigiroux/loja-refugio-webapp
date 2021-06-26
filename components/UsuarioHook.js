@@ -19,6 +19,7 @@ export const USUARIO_ATUAL_QUERY = gql`
               name
             }
             fotos {
+              principal
               imagem {
                 publicUrlTransformed
               }

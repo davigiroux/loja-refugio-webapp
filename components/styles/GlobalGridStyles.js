@@ -24,4 +24,12 @@ export const CenterGrid = styled.div`
       color: var(--primary);
     }
   }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+
+    > div {
+      grid-column: 1/-1;
+    }
+  }
 `;

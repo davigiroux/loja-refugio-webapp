@@ -22,8 +22,8 @@ function Sair() {
     <button
       id="sair"
       type="button"
-      onClick={() => {
-        signout();
+      onClick={async () => {
+        await signout();
         fecharMenu();
         router.push({ pathname: '/' });
       }}

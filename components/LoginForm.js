@@ -14,7 +14,7 @@ function LoginForm() {
 
   const [signin, { data, loading }] = useMutation(LOGAR_MUTATION, {
     variables: inputs,
-    refetchQueries: [{ query: USUARIO_ATUAL_QUERY }],
+    refetchQueries: () => [{ query: USUARIO_ATUAL_QUERY }],
   });
 
   const router = useRouter();

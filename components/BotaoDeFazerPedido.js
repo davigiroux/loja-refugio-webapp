@@ -1,7 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import nProgress from 'nprogress';
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import { useCarrinho } from '../lib/carrinhoState';
 import { CheckoutFormStyles, SickButton } from './styles/CheckoutStyles';
 

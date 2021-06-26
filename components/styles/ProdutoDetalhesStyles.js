@@ -70,11 +70,36 @@ export const ProdutoDetalhesStyles = styled.div`
       }
     }
   }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+
+    > img {
+      width: auto;
+      height: 320px;
+    }
+    .tamanhos {
+      gap: 5px;
+      .etiquetas {
+        grid-template-rows: auto;
+        .circulo {
+          width: 30px;
+          height: 30px;
+          font-size: 12px;
+        }
+        .texto {
+          width: 90px;
+          font-size: 10px;
+        }
+      }
+    }
+  }
 `;
 
 export const GridDeFotos = styled.div`
   display: grid;
   grid-auto-flow: column;
+  grid-template-rows: 1fr;
   gap: 10px;
   margin-top: 15px;
   justify-content: left;
@@ -97,6 +122,25 @@ export const GridDeFotos = styled.div`
 
     &.selecionada {
       border: 2px solid var(--primary);
+    }
+  }
+
+  @media (max-width: 600px) {
+    grid-row: 2/3;
+    margin-bottom: 30px;
+
+    .caixa-imagem {
+      width: auto;
+      height: 50px;
+      border: 1px solid var(--lightPrimary);
+      display: grid;
+
+      img {
+        width: 100%;
+        max-width: 35px;
+        height: 40px;
+        object-fit: cover;
+      }
     }
   }
 `;

@@ -13,6 +13,10 @@ const BotaoGrande = styled.button`
     color: var(--red);
     cursor: pointer;
   }
+
+  @media (max-width: 600px) {
+    font-size: 4rem;
+  }
 `;
 
 const REMOVER_DO_CARRINHO_MUTATION = gql`

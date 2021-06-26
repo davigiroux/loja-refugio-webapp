@@ -1,8 +1,10 @@
 import { useRouter } from 'next/dist/client/router';
 import styled from 'styled-components';
 import { useMobileMenu } from '../../contexts/MobileMenuContext';
+import { useCarrinho } from '../../lib/carrinhoState';
 import Sair from '../Sair';
 import { useUsuario } from '../UsuarioHook';
+import CarrinhoButton from './CarrinhoButton';
 
 const LinkContainer = styled.div`
   display: block;
@@ -15,7 +17,7 @@ const LinkContainer = styled.div`
   top: 0;
   right: 0;
   transform: translate(100%, 0);
-  padding: 30px 50px;
+  padding: 30px 25px;
   transition-duration: 0.4s;
   text-align: center;
 
@@ -23,7 +25,27 @@ const LinkContainer = styled.div`
     transform: translate(1%, 0);
   }
 
-  h3 {
+  .greetings {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    column-gap: 10px;
+    h3 {
+      grid-column: 1/-1;
+      font-size: 14px;
+    }
+    #sair {
+      background: transparent;
+      border: none;
+      color: red;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
     border-bottom: 3px solid var(--offWhite);
   }
 
@@ -36,10 +58,10 @@ const LinkContainer = styled.div`
       padding-top: 10px;
     }
 
-    li > #sair {
+    li > #carrinho {
       background: transparent;
       border: none;
-      color: red;
+      color: var(--offWhite);
       margin-top: 20px;
       font-size: 16px;
       cursor: pointer;
@@ -84,17 +106,52 @@ function MobileLinks() {
   const { menuAberto, fecharMenu } = useMobileMenu();
   const usuario = useUsuario();
   const router = useRouter();
+  const { abrirCarrinho, fecharCarrinho, carrinhoAberto } = useCarrinho();
 
   const handleRouteChange = (href) => {
     fecharMenu();
     router.push(href);
   };
 
+  const handleCarrinhoClick = () => {
+    fecharMenu();
+    abrirCarrinho();
+  };
+
+  const overlayClick = () => {
+    fecharMenu();
+    fecharCarrinho();
+  };
+
+  let qtdItens = 0;
+  if (usuario) {
+    qtdItens = usuario?.carrinho?.reduce(
+      (acumulado, itemCarrinho) =>
+        acumulado + (itemCarrinho.produto ? itemCarrinho.quantidade : 0),
+      0
+    );
+  }
+
   return (
     <>
-      <Overlay onClick={fecharMenu} className={menuAberto ? 'active' : ''} />
+      <Overlay
+        onClick={overlayClick}
+        className={menuAberto || carrinhoAberto ? 'active' : ''}
+      />
       <LinkContainer className={menuAberto ? 'active' : ''}>
-        <h3>Olá, {usuario ? usuario.name : 'visitante'}!</h3>
+        <div className="greetings">
+          <h3>Olá, {usuario ? usuario.name : 'visitante'}!</h3>
+
+          {usuario && (
+            <>
+              <CarrinhoButton
+                handleClick={handleCarrinhoClick}
+                qtdItens={qtdItens}
+              />
+              <Sair />
+            </>
+          )}
+        </div>
         <ul>
           {usuario && (
             <>
@@ -140,11 +197,6 @@ function MobileLinks() {
               Contato
             </button>
           </li>
-          {usuario && (
-            <li>
-              <Sair />
-            </li>
-          )}
         </ul>
       </LinkContainer>
     </>

@@ -31,8 +31,8 @@ function MeusPedidos({ usuario }) {
               {formatarData(pedido.dataPedido)}
             </span>
             <span className="valor-do-pedido">
-              Valor total: <strong>{formatarDinheiro(pedido.total)}</strong> (
-              {contarItensNoPedido(pedido)} itens)
+              Valor total: <strong>{formatarDinheiro(pedido.total)}</strong>{' '}
+              <br />({contarItensNoPedido(pedido)} itens)
             </span>
             <Link href={`/pedido/${pedido.id}`}>
               <a className="link-do-pedido">

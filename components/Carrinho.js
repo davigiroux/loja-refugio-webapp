@@ -24,6 +24,19 @@ const ItemCarrinhoStyles = styled.li`
   p {
     margin: 0;
   }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr 1fr;
+
+    img {
+      grid-column: 1/-1;
+    }
+
+    h3 {
+      font-size: 14px;
+    }
+  }
 `;
 
 function ItemCarrinho({ itemCarrinho }) {
@@ -31,13 +44,12 @@ function ItemCarrinho({ itemCarrinho }) {
 
   if (!produto) return null;
 
+  const imgUrl = produto.fotos.find((f) => f.principal).imagem
+    .publicUrlTransformed;
+
   return (
     <ItemCarrinhoStyles>
-      <img
-        width="100"
-        src={produto.foto.imagem.publicUrlTransformed}
-        alt={produto.name}
-      />
+      <img width="100" src={imgUrl} alt={produto.name} />
       <div>
         <h3>{produto.name}</h3>
         <p>

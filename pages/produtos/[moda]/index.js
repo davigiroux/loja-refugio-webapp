@@ -11,26 +11,26 @@ function PaginaDosProdutos() {
   const pagina = parseInt(query.pagina);
   const tagDeModaDoProduto = query.moda.replace('-', ' ');
 
-  const metaDaPagina = {
+  const metaData = {
     titulo: '',
     imgSrc: '',
     imgAlt: '',
   };
 
   if (tagDeModaDoProduto === 'moda feminina') {
-    metaDaPagina.titulo = 'Moda Feminina';
-    metaDaPagina.imgSrc = '/mini-logo-feminina.png';
-    metaDaPagina.imgAlt = 'logo-feminina';
+    metaData.titulo = 'Moda Feminina';
+    metaData.imgSrc = '/mini-logo-feminina.png';
+    metaData.imgAlt = 'logo-feminina';
   } else if (tagDeModaDoProduto === 'moda masculina') {
-    metaDaPagina.titulo = 'Moda Masculina';
-    metaDaPagina.imgSrc = '/mini-logo-masculino.png';
-    metaDaPagina.imgAlt = 'logo-masculino';
+    metaData.titulo = 'Moda Masculina';
+    metaData.imgSrc = '/mini-logo-masculino.png';
+    metaData.imgAlt = 'logo-masculino';
   }
   return (
     <ModaGrid>
       <h1>
-        <img src={metaDaPagina.imgSrc} alt={metaDaPagina.imgAlt} />
-        {metaDaPagina.titulo}
+        <img src={metaData.imgSrc} alt={metaData.imgAlt} />
+        {metaData.titulo}
       </h1>
       <Paginacao pagina={pagina || 1} tagDeModa={query.moda} />
       <Produtos pagina={pagina || 1} tagDeModa={tagDeModaDoProduto} />
