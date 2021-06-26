@@ -53,6 +53,9 @@ const InnerStyle = styled.div`
   max-width: var(--maxWwidth);
   margin: 0 auto;
   padding: 110px 15px;
+  @media (max-width: 600px) {
+    max-width: 100%;
+  }
 `;
 
 function Page({ children }) {

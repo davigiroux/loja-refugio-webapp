@@ -11,6 +11,14 @@ const HomeContainer = styled.div`
   align-content: center;
   grid-template-rows: minmax(200px, auto) minmax(auto, 300px);
   gap: 30px;
+
+  @media (max-width: 600px) {
+    img {
+      margin-top: -80px;
+      width: 70%;
+      height: auto;
+    }
+  }
 `;
 
 const LinkContainer = styled.div`
@@ -34,6 +42,11 @@ const LinkContainer = styled.div`
       color: var(--lightGrey);
       border: var(--lightGrey);
     }
+  }
+
+  @media (max-width: 600px) {
+    margin-top: -60px;
+    text-align: center;
   }
 `;
 

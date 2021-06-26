@@ -1,8 +1,10 @@
 import { useRouter } from 'next/dist/client/router';
 import React from 'react';
+import dynamic from 'next/dynamic';
 import Paginacao from '../../../components/Paginacao';
 import Produtos from '../../../components/Produtos';
-import { ModaGrid } from '../../../components/styles/ModaStyles';
+
+const ModaGrid = dynamic(() => import('../../../components/styles/ModaStyles'));
 
 function PaginaDosProdutos() {
   const { query } = useRouter();

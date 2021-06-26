@@ -16,12 +16,24 @@ const Navbar = styled.div`
   background-color: var(--black);
   width: 100%;
   height: 100px;
-  grid-template-columns: minmax(auto, 400px) 1fr 1fr;
+  grid-template-columns: auto 1fr 1fr;
   align-items: center;
   padding: 0 20px;
   gap: 30px;
   position: fixed;
   z-index: 299;
+  @media (max-width: 600px) {
+    height: 110px;
+    column-gap: 10px;
+    row-gap: 0;
+    grid-template-columns: 1fr 40px;
+    grid-template-rows: auto 1fr;
+
+    #search {
+      font-size: 13px;
+      width: 100%;
+    }
+  }
 `;
 
 const Logo = styled.span`
@@ -31,9 +43,14 @@ const Logo = styled.span`
 
   img {
     cursor: pointer;
+  }
+  @media (max-width: 600px) {
+    grid-column: 1 / 3;
+    justify-self: center;
+    padding-top: 10px;
 
-    @media (max-width: 600px) {
-      width: 80px;
+    img {
+      width: 90px;
       height: auto;
     }
   }
@@ -116,6 +133,7 @@ const NavLinksMobile = styled.nav`
   display: none;
   @media (max-width: 600px) {
     display: block;
+    justify-self: center;
 
     a,
     #botao-hamburguer {

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ModaGrid = styled.div`
+const ModaGrid = styled.div`
   display: grid;
   justify-content: center;
   justify-items: center;
@@ -21,5 +21,14 @@ export const ModaGrid = styled.div`
     img {
       width: 100px;
     }
+
+    @media (max-width: 600px) {
+      font-size: 20px;
+      img {
+        width: 80px;
+      }
+    }
   }
 `;
+
+export default ModaGrid;
