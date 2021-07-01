@@ -11,6 +11,11 @@ const Itens = styled.div`
   grid-template-columns: 1fr 1fr 1fr;
   justify-items: center;
   gap: 25px;
+
+  @media (max-width: 600px) {
+    justify-items: left;
+    grid-template-columns: 1fr;
+  }
 `;
 
 const ItemPedido = styled.div`
@@ -39,6 +44,10 @@ const Rodape = styled.footer`
     margin: 0;
     color: var(--primary);
     font-weight: 600;
+
+    @media (max-width: 600px) {
+      font-size: 18px;
+    }
   }
 `;
 
