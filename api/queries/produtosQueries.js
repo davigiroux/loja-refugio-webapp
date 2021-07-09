@@ -10,6 +10,7 @@ export const ALL_PRODUTOS_QUERY = gql`
       id
       name
       preco
+      precoPromocional
       tags {
         name
       }
@@ -31,6 +32,7 @@ export const PRODUTO_DETALHES_QUERY = gql`
       name
       descricao
       preco
+      precoPromocional
       fotos {
         principal
         imagem {

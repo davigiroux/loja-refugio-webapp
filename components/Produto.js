@@ -6,8 +6,11 @@ import {
   ProdutoInfo,
 } from './styles/ProdutosStyles';
 import formatarDinheiro from '../lib/formatarDinheiro';
+import { formatarPorcentagem } from '../lib/formatarPorcentagem';
 
 function Produto({ produto }) {
+  const ehPromocao = produto.precoPromocional !== null;
+
   return (
     <ProdutoStyle>
       <Link href={`/produto/${produto.id}`}>
@@ -17,7 +20,17 @@ function Produto({ produto }) {
             alt={produto?.fotos[0]?.imagem?.tituloDaImagem}
           />
           <p>{produto.name}</p>
-          <ValorDoProduto>{formatarDinheiro(produto.preco)}</ValorDoProduto>
+          <span className="oferta-tag" hidden={!ehPromocao}>
+            {formatarPorcentagem(produto.preco, produto.precoPromocional)} off
+          </span>
+          <ValorDoProduto>
+            <span hidden={!ehPromocao}>
+              {formatarDinheiro(produto.precoPromocional)}
+            </span>
+            <span className={ehPromocao ? 'preco-sem-promocao' : ''}>
+              {formatarDinheiro(produto.preco)}
+            </span>
+          </ValorDoProduto>
         </ProdutoInfo>
       </Link>
     </ProdutoStyle>
